@@ -1,0 +1,48 @@
+version: "1.0"
+name: 小蚕歪麦统一监控
+displayName: 小蚕歪麦统一监控
+stages:
+- name: 执行监控
+  displayName: 执行监控
+  strategy: naturally
+  trigger: auto
+  steps:
+  - step: build@python
+    name: ""
+    displayName: Python 运行环境
+    pythonVersion: "3.9"
+    commands:
+    - pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+    - pip install -r requirements.txt
+    - echo "--- 运行小蚕监控 ---"
+    - python xiaocan.py
+    - echo "--- 运行歪麦监控 ---"
+    - python waimai_fetch.py
+    - echo "--- 合并结果 ---"
+    - python merge_results.py
+    - "EXTRACTED_TOKEN=$(python3 -c \"import json; print(json.load(open('config.json')).get('REPO_TOKEN',\
+      \ ''))\")"
+    - git config --global user.email "bot@gitee.com"
+    - git config --global user.name "GiteeGoBot"
+    - '# 添加 data 目录下的所有 JSON 和根目录的 new_shops.json'
+    - git add data/*.json new_shops.json
+    - "if [ -n \"$(git status --porcelain)\" ]; then"
+    - "  git commit -m \"chore: update combined monitor results [skip ci]\""
+    - "  git push \"https://daxuefeiyang:${EXTRACTED_TOKEN}@gitee.com/daxuefeiyang/xiaocan-waimai.git\"\
+      \ HEAD:master"
+    - else
+    - '  echo "No significant changes to commit"'
+    - fi
+    artifacts:
+    - name: MONITOR_RESULT
+      path:
+      - data/*.json
+      - new_shops.json
+      type: .tar.gz
+triggers:
+  trigger: auto
+  schedule:
+  - cron: "* */10 0,7-23 * * ? *"
+notify: []
+strategy:
+  blocking: true

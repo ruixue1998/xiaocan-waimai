@@ -1,0 +1,81 @@
+{
+    "updated_at": "2026-09-12 15:01:33",
+    "count": 5,
+    "shops": [
+        {
+            "name": "十年一碗粉",
+            "source": "小蚕",
+            "distance_km": 0.13,
+            "address": "城阳区国货华城路二小区",
+            "logo": "https://cube.elemecdn.com/c/8f/32c3600486ffca9bd0aab08d4f7e8jpeg.jpeg",
+            "start_time": "00:00",
+            "is_advance": true,
+            "is_scheduled": false,
+            "type": "满减",
+            "platform": "饿了么",
+            "pay": 13.0,
+            "back": 10.0,
+            "left": 3
+        },
+        {
+            "name": "喜羊羊·草原蒸羊排",
+            "source": "小蚕",
+            "distance_km": 1.36,
+            "address": "宝龙广场(崇阳路店)",
+            "logo": "https://gw.alicdn.com//imgextra/i1/1921299927998/O1CN01PMdwcf28x8s1drNUI_!!1921299927998-0-koubei.jpg",
+            "start_time": "10:00",
+            "is_advance": true,
+            "is_scheduled": false,
+            "type": "满减",
+            "platform": "美团",
+            "pay": 15.0,
+            "back": 10.0,
+            "left": 3
+        },
+        {
+            "name": "朵拉提·新疆牛肉抓饭(鲁邦店)",
+            "source": "小蚕",
+            "distance_km": 2.14,
+            "address": "城阳区麦世达韩国精品百货(正阳中路南100米)",
+            "logo": "https://gw.alicdn.com//imgextra/i2/1921157845037/O1CN01YnmeAK1n5063E8PDr_!!1921157845037-0-koubei.jpg",
+            "start_time": "10:00",
+            "is_advance": true,
+            "is_scheduled": false,
+            "type": "满减",
+            "platform": "饿了么",
+            "pay": 20.0,
+            "back": 14.0,
+            "left": 2
+        },
+        {
+            "name": "朵拉提新疆牛肉抓饭（青岛城阳店）",
+            "source": "小蚕",
+            "distance_km": 2.14,
+            "address": "城阳区麦世达韩国精品百货(正阳中路南50米)",
+            "logo": "http://p0.meituan.net/business/5bfdaea6eb0b2991a240ac63425f29f7550642.jpg",
+            "start_time": "10:00",
+            "is_advance": true,
+            "is_scheduled": false,
+            "type": "满减",
+            "platform": "美团",
+            "pay": 20.0,
+            "back": 14.0,
+            "left": 3
+        },
+        {
+            "name": "慕孜现卤螺蛳粉",
+            "source": "小蚕",
+            "distance_km": 4.62,
+            "address": "城阳区正商·蓝海港湾(惠宁路北)",
+            "logo": "http://p1.meituan.net/business/be4dcdebbdfa901a3888bebae3872fd674059.jpg",
+            "start_time": "11:00",
+            "is_advance": true,
+            "is_scheduled": false,
+            "type": "满减",
+            "platform": "美团",
+            "pay": 20.0,
+            "back": 14.0,
+            "left": 1
+        }
+    ]
+}
