@@ -1,0 +1,42 @@
+name: 小蚕歪麦统一监控
+
+on:
+  schedule:
+    # 每天 00:00 以及 07:00-23:00 每 10 分钟运行一次 (UTC 时间)
+    - cron: '*/10 16,23,0-15 * * *'
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      PYTHONUNBUFFERED: 1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Monitor
+        run: |
+          echo "--- 运行小蚕监控 ---"
+          python xiaocan.py
+          echo "--- 运行歪麦监控 ---"
+          python waimai_fetch.py
+          echo "--- 合并结果 ---"
+          python merge_results.py
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update monitor results [skip ci]"
+          file_pattern: 'data/*.json new_shops.json'
